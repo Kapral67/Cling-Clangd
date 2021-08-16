@@ -19,6 +19,8 @@ jobs:
         run: |
           curl -L -o /tmp/hydrun "https://github.com/pojntfx/hydrun/releases/latest/download/hydrun.linux-$(uname -m)"
           install /tmp/hydrun /usr/local/bin
+      - name: Chmod Hydrunfile
+        run: chmod a+x ./Hydrunfile
       - name: Build with hydrun
         run: hydrun -a amd64,arm64 ./Hydrunfile
       - name: Publish to GitHub releases
