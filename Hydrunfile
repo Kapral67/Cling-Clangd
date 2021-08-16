@@ -7,7 +7,7 @@ apt install -y git cmake build-essential subversion python3-dev libncurses5-dev 
 #apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"
 #apt install -y kitware-archive-keyring
 #apt install -y cmake
-
+sudo su
 export C=/usr/bin/gcc
 export CXX=/usr/bin/g++
 cd /tmp
