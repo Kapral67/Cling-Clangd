@@ -1,4 +1,4 @@
-name: hydrun CI
+name: hydrun-amd64
 
 on:
   push:
