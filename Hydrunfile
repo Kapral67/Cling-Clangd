@@ -19,8 +19,12 @@ cmake /tmp/llvm-project/llvm -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_P
 ninja check-clangd
 rm -rf /tmp/llvm-project
 
-cd /out
-tar -zcf ./jupyter-clangd.$(uname -m).tar.gz *
+mkdir -p /out/data/build/bin
+mkdir -p /out/data/lib/clang
+mv /out/build/bin/clangd /out/data/build/bin
+mv /out/build/lib/clang/* /out/data/lib/clang
+tar -zcf /out/data/jupyter-clangd.$(uname -m).tar.gz /out/data/*
+rm -rf /out/build
 
 mkdir -p /data/out
-mv /out/jupyter-clangd.$(uname -m).tar.gz /data/out
+mv /out/data/jupyter-clangd.$(uname -m).tar.gz /data/out
