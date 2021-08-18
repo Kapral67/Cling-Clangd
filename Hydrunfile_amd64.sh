@@ -3,7 +3,7 @@
 apt update
 apt install -y git cmake build-essential subversion python3-dev python3-pip libncurses5-dev libxml2-dev libedit-dev swig doxygen graphviz xz-utils ninja-build software-properties-common lsb-release gcc g++ sed sudo
 
-yes | pip install --upgrade cmake
+yes | pip3 install --upgrade cmake
 
 export C=/usr/bin/gcc
 export CXX=/usr/bin/g++
