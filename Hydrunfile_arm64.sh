@@ -1,7 +1,6 @@
 #!/bin/bash
 
-apt update
-apt install -y git build-essential subversion python3-dev python3-pip libncurses5-dev libxml2-dev libedit-dev swig graphviz xz-utils ninja-build gcc g++ sed sudo
+apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends git build-essential subversion python3-dev python3-pip libncurses5-dev libxml2-dev libedit-dev swig graphviz xz-utils ninja-build gcc g++ sed sudo
 
 yes | pip3 install --upgrade cmake
 
