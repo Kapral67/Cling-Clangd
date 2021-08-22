@@ -5,9 +5,9 @@ apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recomme
 yes | pip3 install --upgrade cmake
 
 if [ $(uname -m) = 'aarch64' ]; then
-	export target="AArch64"
+	export target="-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=\"AArch64\""
 else
-    export target="x86"
+    export target=""
 fi
 
 cd /tmp
@@ -23,7 +23,7 @@ sed -i "265i\\\t   .Case(\"ipynb\", TY_CXX)" /tmp/$llvm/clang/lib/Driver/Types.c
 
 mkdir -p /tmp/build
 cd /tmp/build
-cmake -DCMAKE_C_COMPILER=$(which clang-10) -DCMAKE_CXX_COMPILER=$(which clang++-10) -DCMAKE_BUILD_TYPE=Release -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=$target -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_USE_LINKER=$(which gold) -Wno-dev -GNinja /tmp/$llvm/llvm
+cmake -DCMAKE_C_COMPILER=$(which clang-10) -DCMAKE_CXX_COMPILER=$(which clang++-10) -DCMAKE_BUILD_TYPE=Release $target -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_USE_LINKER=$(which gold) -Wno-dev -GNinja /tmp/$llvm/llvm
 ninja clangd
 rm -rf /tmp/$llvm
 
