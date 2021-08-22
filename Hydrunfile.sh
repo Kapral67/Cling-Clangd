@@ -7,7 +7,7 @@ yes | pip3 install --upgrade cmake
 if [ $(uname -m) = 'aarch64' ]; then
 	export target="-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=AArch64"
 else
-    export target=""
+    export target="-DLLVM_EXPERIMENTAL_TARGET_TO_BUILD=X86-64"
 fi
 
 cd /tmp
