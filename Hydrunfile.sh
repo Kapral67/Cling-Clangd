@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip ninja-build clang-10 llvm-10-dev libomp-10-dev sed curl wget binutils-gold
+apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip ninja-build clang-10 llvm-10-dev libomp-10-dev sed curl wget binutils-gold git
 
 yes | pip3 install --upgrade cmake
 
