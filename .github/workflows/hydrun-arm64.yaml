@@ -32,4 +32,4 @@ jobs:
           automatic_release_tag: "arm64"
           prerelease: false
           files: |
-            data/out/*
+            out/*
