@@ -1,8 +1,8 @@
 name: hydrun-amd64
 
 on:
-  #push:
-  #pull_request:
+  push:
+    branches: main
     
 jobs:
   build-linux:
@@ -28,6 +28,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          title: "Ubuntu:Bionic-amd64"
           automatic_release_tag: "amd64"
           prerelease: false
           files: |
