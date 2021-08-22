@@ -1,11 +1,11 @@
 #!/bin/bash
 
-apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip libncurses5-dev libxml2-dev libedit-dev ninja-build gcc g++ sed curl wget
+apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip ninja-build clang-10 llvm-10-dev libomp-10-dev sed curl wget
 
 yes | pip3 install --upgrade cmake
 
-export C=/usr/bin/gcc
-export CXX=/usr/bin/g++
+export C=/usr/bin/clang
+export CXX=/usr/bin/clang++
 cd /tmp
 export url=$(curl -s https://api.github.com/repos/llvm/llvm-project/releases/latest | grep "tarball_url" | cut -d '"' -f 4,4)
 wget -O latest.tar.gz $url
