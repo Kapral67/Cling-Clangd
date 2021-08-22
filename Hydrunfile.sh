@@ -5,7 +5,7 @@ apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recomme
 yes | pip3 install --upgrade cmake
 
 if [ $(uname -m) = 'aarch64' ]; then
-	export target="-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=\"AArch64\""
+	export target="-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=AArch64"
 else
     export target=""
 fi
