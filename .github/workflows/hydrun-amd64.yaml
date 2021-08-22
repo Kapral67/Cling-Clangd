@@ -31,7 +31,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           title: "Ubuntu:Bionic-amd64"
-          automatic_release_tag: "amd64"
-          prerelease: false
+          automatic_release_tag: "amd64-dev"
+          prerelease: true
           files: |
             out/*

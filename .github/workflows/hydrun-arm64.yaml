@@ -31,7 +31,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           title: "Ubuntu:Focal-arm64"
-          automatic_release_tag: "arm64"
-          prerelease: false
+          automatic_release_tag: "arm64-dev"
+          prerelease: true
           files: |
             out/*
