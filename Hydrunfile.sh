@@ -10,18 +10,18 @@ cd /tmp
 export url=$(curl -s https://api.github.com/repos/llvm/llvm-project/releases/latest | grep "tarball_url" | cut -d '"' -f 4,4)
 wget -O latest.tar.gz $url
 tar -zvxf latest.tar.gz
-export llvm-project=$(find . -type d -name *llvm* -print)
+export llvm=$(find . -type d -name *llvm* -print)
 
 export version=$(curl -s https://api.github.com/repos/llvm/llvm-project/releases/latest | grep "tag_name" | cut -d '"' -f 4,4 | cut -d '-' -f 2)
 
 # Edit for Clangd to work with Jupyter .ipynb
-sed -i "265i\\\t   .Case(\"ipynb\", TY_CXX)" /tmp/$llvm-project/clang/lib/Driver/Types.cpp
+sed -i "265i\\\t   .Case(\"ipynb\", TY_CXX)" /tmp/$llvm/clang/lib/Driver/Types.cpp
 
 mkdir -p /tmp/build
 cd /tmp/build
-cmake /tmp/$llvm-project/llvm -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
+cmake /tmp/$llvm/llvm -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
 ninja clangd
-rm -rf /tmp/$llvm-project
+rm -rf /tmp/$llvm
 
 mkdir -p /tmp/data/build/bin
 mkdir -p /tmp/data/lib/clang
