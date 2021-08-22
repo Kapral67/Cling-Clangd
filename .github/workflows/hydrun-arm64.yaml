@@ -2,7 +2,9 @@ name: hydrun-arm64
 
 on:
   push:
-    branches: main
+    branches:
+        - "main"
+        - "dev"
     
 jobs:
   build-linux:

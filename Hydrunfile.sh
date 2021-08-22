@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip ninja-build clang-10 llvm-10-dev libomp-10-dev sed curl wget
+apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip ninja-build clang-10 llvm-10-dev libomp-10-dev sed curl wget binutils-gold
 
 yes | pip3 install --upgrade cmake
 
@@ -19,7 +19,7 @@ sed -i "265i\\\t   .Case(\"ipynb\", TY_CXX)" /tmp/$llvm/clang/lib/Driver/Types.c
 
 mkdir -p /tmp/build
 cd /tmp/build
-cmake /tmp/$llvm/llvm -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
+cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_USE_LINKER=gold -GNinja /tmp/$llvm/llvm
 ninja clangd
 rm -rf /tmp/$llvm
 
