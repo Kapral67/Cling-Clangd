@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential subversion python3-dev python3-pip libncurses5-dev libxml2-dev libedit-dev xz-utils ninja-build gcc g++ sed curl wget
+apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends build-essential python3-dev python3-pip libncurses5-dev libxml2-dev libedit-dev ninja-build gcc g++ sed curl wget
 
 yes | pip3 install --upgrade cmake
 
