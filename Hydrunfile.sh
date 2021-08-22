@@ -4,8 +4,8 @@ apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recomme
 
 yes | pip3 install --upgrade cmake
 
-export C=/usr/bin/clang
-export CXX=/usr/bin/clang++
+#export C=/usr/bin/clang
+#export CXX=/usr/bin/clang++
 cd /tmp
 export url=$(curl -s https://api.github.com/repos/llvm/llvm-project/releases/latest | grep "tarball_url" | cut -d '"' -f 4,4)
 wget -O latest.tar.gz $url
@@ -19,7 +19,7 @@ sed -i "265i\\\t   .Case(\"ipynb\", TY_CXX)" /tmp/$llvm/clang/lib/Driver/Types.c
 
 mkdir -p /tmp/build
 cd /tmp/build
-cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_USE_LINKER=gold -GNinja /tmp/$llvm/llvm
+cmake -DCMAKE_C_COMPILER=$(which clang) -DCMAKE_CXX_COMPILER=$(which clang++) -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_USE_LINKER=$(which gold) -GNinja /tmp/$llvm/llvm
 ninja clangd
 rm -rf /tmp/$llvm
 
