@@ -4,9 +4,7 @@ apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recomme
 
 yes | pip3 install --upgrade cmake
 
-if [ $(uname -m) = 'x86_64' ]; then
-	export target="x86-64"
-elif [ $(uname -m) = 'aarch64' ]; then
+if [ $(uname -m) = 'aarch64' ]; then
 	export target="AArch64"
 else
     export target="x86"
