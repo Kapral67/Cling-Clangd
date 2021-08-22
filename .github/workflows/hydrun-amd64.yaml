@@ -22,7 +22,7 @@ jobs:
       - name: Chmod Hydrunfile_amd64
         run: chmod a+x ./Hydrunfile_amd64.sh
       - name: Build with hydrun
-        run: hydrun -a amd64 -o ubuntu:bionic ./Hydrunfile_amd64.sh
+        run: hydrun -a amd64 -o ubuntu:bionic ./Hydrunfile.sh
       - name: Publish to GitHub releases
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: marvinpinto/action-automatic-releases@latest
