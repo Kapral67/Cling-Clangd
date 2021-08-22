@@ -1,8 +1,8 @@
 # Cling-Clangd
 Rolling builds of clangd with notebook support for jupyter-lsp
 
-*Note: All Commits Dated 8/19/2021 and after must be signed\**
+*Note: All Commits/Pushes/Tags/Etc. Dated 8/19/2021 and after must be signed\**
 
-<sub>*\*not yet including commits &/or tags by github-actions*</sub>
+<sub>*\*Verified status on a per commit/push/tag/etc. basis is not permanent and subject to variability as certificates expire.*</sub>
 
 Credit: https://github.com/pojntfx/hydrun
