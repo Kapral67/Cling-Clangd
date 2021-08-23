@@ -24,7 +24,7 @@ jobs:
       - name: Chmod Hydrunfile_arm64
         run: chmod a+x ./Hydrunfile.sh
       - name: Build with hydrun
-        run: hydrun -a arm64 -o ubuntu:focal ./Hydrunfile.sh
+        run: hydrun -a amd64 -o ubuntu:focal ./Hydrunfile-aarch64.sh
       - name: Publish to GitHub releases
         #if: ${{ github.ref == 'refs/heads/main' }}
         uses: marvinpinto/action-automatic-releases@latest
